@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float speed;
+    public float xmove;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,15 +15,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.D))//キーコードDが押されたら
-        {
-            //transform.position  +=  new Vector3(0.2f, 0, 0);//Playerの座標を、元の座標から、X方向に+0.2する
-            transform.position.x    +=  0.2;
-        }
-        if(Input.GetKey(KeyCode.A))
-        {
-            //transform.position += new Vector3(-0.2f, 0, 0);
-            transform.position.x    +=  -0.2;
-        }
+        xmove = Input.GetAxis("Horizontal") * speed;
+        transform.position += new Vector3(xmove, 0, 0);
     }
 }
